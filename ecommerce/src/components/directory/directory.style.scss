@@ -1,0 +1,7 @@
+// 고유요소라서 혼자 둔다
+.directory-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
