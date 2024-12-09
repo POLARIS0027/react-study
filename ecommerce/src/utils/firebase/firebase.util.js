@@ -1,9 +1,9 @@
 import { initializeApp } from 'firebase/app';
 import {
     getAuth,
-    signInWithRedirect,
     signInWithPopup,
-    GoogleAuthProvider
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword,
 } from 'firebase/auth'
 import {
     getFirestore,
@@ -37,11 +37,38 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 // 싱글톤 인스턴스
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+    if (!userAuth) return;
+
     const userDocRef = doc(db, 'users', userAuth.uid);
 
-    console.log(userDocRef);
+    // userdata가 있는지 확인한다.
     const userSnapshot = await getDoc(userDocRef);
-    console.log(userSnapshot.exists());
+
+    // 만약 userdata가 없다면, 우리가 가진 컬렉션의 특정 주소로 userdata를 만든다.
+    if (!userSnapshot.exists()) {
+        const { displayName, email } = userAuth;
+        const createAt = new Date();
+
+        try {
+            await setDoc(userDocRef, {
+                displayName,
+                email,
+                createAt,
+                ...additionalInformation,
+            });
+        } catch (error) {
+            console.log('error creating the user', error.message)
+        }
+    }
+    // userDocRef를 리턴한다.
+    return userDocRef;
+
 };
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+    if (!email || !password) return;
+
+    return await createUserWithEmailAndPassword(auth, email, password)
+}
 
