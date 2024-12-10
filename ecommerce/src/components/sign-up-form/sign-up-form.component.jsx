@@ -19,15 +19,15 @@ const SignUpForm = () => {
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
-    }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             alert('패스워드가 일치하지 않습니다');
             return;
-        }
+        };
 
         try {
             const { user } = await createAuthUserWithEmailAndPassword(
@@ -41,8 +41,8 @@ const SignUpForm = () => {
                 alert('이메일이 이미 사용중입니다');
             }
             console.log('user creation error', error);
-        }
-    }
+        };
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -54,11 +54,11 @@ const SignUpForm = () => {
         <div className='sign-up-container'>
             <h2>계정이 없으세요?</h2>
             <span>이메일로 회원 가입하기</span>
-            <form classname='group' onSubmit={handleSubmit}>
+            <form className='group' onSubmit={handleSubmit}>
                 <FormInput label='닉네임' onChange={handleChange} name="displayName" value={displayName} required />
-                <FormInput label='이메일' onChange={handleChange} name="email" value={email} required />
-                <FormInput label='비밀번호' onChange={handleChange} name="password" value={password} required />
-                <FormInput label='비밀번호(확인)' onChange={handleChange} name="confirmPassword" value={confirmPassword} required />
+                <FormInput label='이메일' onChange={handleChange} name="email" value={email} required type='email' />
+                <FormInput label='비밀번호' onChange={handleChange} name="password" value={password} required type='password' />
+                <FormInput label='비밀번호(확인)' onChange={handleChange} name="confirmPassword" value={confirmPassword} required type='password' />
                 <Button children='제출' type="submit" />
             </form>
         </div>
