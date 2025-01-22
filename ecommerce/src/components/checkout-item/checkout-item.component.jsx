@@ -32,7 +32,7 @@ const CheckoutItem = ({ cartItem }) => {
                     &#10095;
                 </div>
             </span>
-            <span className='price'> ₩{price} </span>
+            <span className='price'> ₩{price}000 </span>
             <div className='remove-button' onClick={removeItemFromCartHandler}>&#10005;</div>
 
 

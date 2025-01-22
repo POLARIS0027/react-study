@@ -1,14 +1,17 @@
-import CategoryItem from '../category-item/category-item.component'
-import './directory.style.scss'
+import DirectoryItem from '../directory-item/directory-item.component'
+import { DirectoryContainer } from './directory.style.jsx'
+
+// 홈 화면에서, 모자, 재킷 등 DirectoryItem를 보여주는 컨테이너
+// DirectoryItem에서 개별 물건을 보여준다.
 
 const Directory = ({ categories }) => {
     return (
-        <div className="directory-container">
+        <DirectoryContainer>
             {/* 분해 할당 */}
             {categories.map((category) => (
-                <CategoryItem key={category.id} category={category} />
+                <DirectoryItem key={category.id} category={category} />
             ))}
-        </div>
+        </DirectoryContainer>
     )
 }
 

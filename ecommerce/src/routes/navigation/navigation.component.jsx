@@ -1,9 +1,9 @@
 import { Fragment, useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
 
 import { ReactComponent as Dewlogo } from '../../assets/Dewlogo.svg'
 
-import './navigation.style.scss'
+import { LogoContainer, NavigationContainer, NavLinks } from "./navigation.style";
 import { UserContext } from "../../contexts/user.context";
 import { CartContext } from "../../contexts/cart.context";
 import { signOutUser } from "../../utils/firebase/firebase.util";
@@ -17,30 +17,28 @@ const Navigation = () => {
 
     return (
         <Fragment>
-            <div className='navigation'>
-                <Link className='logo-container' to='/'>
+            <NavigationContainer>
+                <LogoContainer to='/'>
                     <Dewlogo className='logo' />
-                </Link>
-                <div className='nav-links-container'>
-                    <Link className='nav-link' to='/shop'>
+                </LogoContainer>
+                <NavLinks>
+                    <NavLink to='/shop'>
                         SHOP
-                    </Link>
-                    <Link className='nav-link' to='/shop'>
-                        CONTACT
-                    </Link>
+                    </NavLink>
+
                     {
                         currentUser ? (
-                            <span className='nav-link' onClick={signOutUser}>LOG OUT</span>
+                            <NavLink as='span' onClick={signOutUser}>LOG OUT</NavLink>
                         ) : (
-                            <Link className='nav-link' to='/auth'>
+                            <NavLink to='/auth'>
                                 LOG IN
-                            </Link>
+                            </NavLink>
                         )
                     }
                     <CartIcon />
-                </div>
+                </NavLinks>
                 {isCartOpen && <CartDropdown />}
-            </div>
+            </NavigationContainer>
             <Outlet />
         </Fragment>
     );

@@ -7,7 +7,7 @@ const Home = () => {
         {
             "id": 1,
             "title": "모자",
-            "imageUrl": "https://my-react-study.s3.ap-northeast-1.amazonaws.com/hats.jpg"
+            "imageUrl": "https://i.ibb.co/YTjW3vF/green-beanie.png"
         },
         {
             "id": 2,
@@ -22,7 +22,7 @@ const Home = () => {
         {
             "id": 4,
             "title": "여성",
-            "imageUrl": "https://my-react-study.s3.ap-northeast-1.amazonaws.com/womens.jpeg"
+            "imageUrl": "https://i.ibb.co/fNjwrpy/ayj.png"
         },
         {
             "id": 5,

@@ -7,7 +7,7 @@ import {
     signInAuthUserWithEmailAndPassword
 } from '../../utils/firebase/firebase.util';
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import './sign-in-form.style.scss';
 
 
@@ -59,7 +59,7 @@ const SignInForm = () => {
                 <FormInput label='비밀번호' onChange={handleChange} name="password" value={password} required type='password' />
                 <div className='buttons-container'>
                     <Button children='로그인' type="submit" />
-                    <Button type='button' onClick={signInWithGoogle} children='구글 로그인' buttonType='google' />
+                    <Button buttonType={BUTTON_TYPE_CLASSES.google} type='button' onClick={signInWithGoogle} children='구글 로그인' />
                 </div>
             </form>
         </div>
