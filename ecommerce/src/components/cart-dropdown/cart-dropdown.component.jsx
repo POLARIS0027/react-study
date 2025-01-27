@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../contexts/cart.context';
 import { useNavigate } from 'react-router-dom';
 
-import './cart-dropdown.style.scss';
+import { CartDropdownContainer, CartItems, EmptyMessage } from './cart-dropdown.style';
 
 import Button from '../button/button.component';
 
@@ -17,12 +17,16 @@ const CartDropdown = () => {
     }
 
     return (
-        <div className='cart-dropdown-container'>
-            <div className='cart-itmes'>
-                {cartItems.map(item => <CartItem key={item.id} cartItem={item} />)}
-            </div>
+        <CartDropdownContainer>
+            <CartItems>
+                {cartItems.length ? (cartItems.map(item => (
+                    <CartItem key={item.id} cartItem={item} />))
+                ) : (
+                    <EmptyMessage>표시 가능한 품목이 없습니다.</EmptyMessage>
+                )}
+            </CartItems>
             <Button onClick={goToCheckoutHandler}>결제하기</Button>
-        </div>
+        </CartDropdownContainer>
     )
 }
 

@@ -1,4 +1,4 @@
-import './checkout.style.scss'
+import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from './checkout.style';
 
 // Cart내용을 담아야 하니까 CartContext가져옴
 import { useContext } from 'react';
@@ -14,24 +14,24 @@ const Checkout = () => {
     const { cartItems, cartTotal } = useContext(CartContext);
 
     return (
-        <div className='checkout-container'>
-            <div className='checkout-header'>
-                <div className='header-block'>
+        <CheckoutContainer>
+            <CheckoutHeader>
+                <HeaderBlock>
                     <span>사진</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>설명</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>수량</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>가격</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>삭제</span>
-                </div>
-            </div>
+                </HeaderBlock>
+            </CheckoutHeader>
 
 
             {
@@ -41,9 +41,9 @@ const Checkout = () => {
                     );
                 })
             }
-            <span className='total'>총액: ₩{cartTotal}</span>
+            <Total>총액: ₩{cartTotal}000</Total>
 
-        </div>
+        </CheckoutContainer>
     );
 }
 

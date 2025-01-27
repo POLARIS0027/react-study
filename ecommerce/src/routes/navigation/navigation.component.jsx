@@ -11,6 +11,8 @@ import { signOutUser } from "../../utils/firebase/firebase.util";
 //장바구니 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+
+// NavBar를 표현. 로고와 메뉴를 표시함
 const Navigation = () => {
     const { currentUser } = useContext(UserContext);
     const { isCartOpen } = useContext(CartContext);
@@ -19,7 +21,7 @@ const Navigation = () => {
         <Fragment>
             <NavigationContainer>
                 <LogoContainer to='/'>
-                    <Dewlogo className='logo' />
+                    <Dewlogo />
                 </LogoContainer>
                 <NavLinks>
                     <NavLink to='/shop'>

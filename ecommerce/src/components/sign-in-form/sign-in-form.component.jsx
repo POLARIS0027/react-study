@@ -8,7 +8,7 @@ import {
 } from '../../utils/firebase/firebase.util';
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
-import './sign-in-form.style.scss';
+import { SignInContainer, ButtonsContainer } from './sign-in-form.style';
 
 
 const defaultFormFields = {
@@ -51,18 +51,18 @@ const SignInForm = () => {
     };
 
     return (
-        <div className='sign-in-container'>
+        <SignInContainer>
             <h2>이미 계정이 있어요</h2>
             <span>이메일로 로그인하기</span>
             <form className='group' onSubmit={handleSubmit}>
                 <FormInput label='이메일' onChange={handleChange} name="email" value={email} required type='email' />
                 <FormInput label='비밀번호' onChange={handleChange} name="password" value={password} required type='password' />
-                <div className='buttons-container'>
+                <ButtonsContainer>
                     <Button children='로그인' type="submit" />
                     <Button buttonType={BUTTON_TYPE_CLASSES.google} type='button' onClick={signInWithGoogle} children='구글 로그인' />
-                </div>
+                </ButtonsContainer>
             </form>
-        </div>
+        </SignInContainer>
     );
 };
 

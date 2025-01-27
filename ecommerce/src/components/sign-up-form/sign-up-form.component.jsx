@@ -3,7 +3,7 @@ import { useState, } from 'react'
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.util';
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
-import './sign-up-form.style.scss';
+import { SignUpContainer } from './sign-up-form.style';
 
 
 const defaultFormFields = {
@@ -52,17 +52,17 @@ const SignUpForm = () => {
     };
 
     return (
-        <div className='sign-up-container'>
+        <SignUpContainer>
             <h2>계정이 없으세요?</h2>
             <span>이메일로 회원 가입하기</span>
-            <form className='group' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <FormInput label='닉네임' onChange={handleChange} name="displayName" value={displayName} required />
                 <FormInput label='이메일' onChange={handleChange} name="email" value={email} required type='email' />
                 <FormInput label='비밀번호' onChange={handleChange} name="password" value={password} required type='password' />
                 <FormInput label='비밀번호(확인)' onChange={handleChange} name="confirmPassword" value={confirmPassword} required type='password' />
                 <Button children='제출' type="submit" />
             </form>
-        </div>
+        </SignUpContainer>
     )
 }
 
