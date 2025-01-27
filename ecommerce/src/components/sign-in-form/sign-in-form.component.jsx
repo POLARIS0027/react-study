@@ -34,13 +34,11 @@ const SignInForm = () => {
 
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(user);
             resetFormFields();
         } catch (error) {
             if (error.code === "auth/invalid-credential") {
                 alert('로그인 정보가 잘못되었습니다')
             }
-            console.log(error);
         };
     };
 

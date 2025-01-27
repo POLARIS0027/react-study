@@ -41,7 +41,6 @@ const SignUpForm = () => {
             if (error.code === 'auth/email-already-in-use') {
                 alert('이메일이 이미 사용중입니다');
             }
-            console.log('user creation error', error);
         };
     };
 
