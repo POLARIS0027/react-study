@@ -1,13 +1,37 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Routes, Route, } from 'react-router-dom'
+
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+} from "./utils/firebase/firebase.util";
 
 import Home from './routes/home/home.component'
 import Navigation from './routes/navigation/navigation.component';
 import Authentication from './routes/authentication/authentication.component';
 import Shop from './routes/shop/shop.component';
 import Checkout from './routes/checkout/checkout.component';
+import { setCurrentUser } from './store/user/user.action';
 
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      // mount될때는 콜백만 작동함.
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      dispatch(setCurrentUser(user));
+    });
+
+    // unmount될때만 작동하는 cleanup 함수
+    return unsubscribe;
+  }, []);
+
   return (
     <Routes>
       <Route path='/' element={<Navigation />} >

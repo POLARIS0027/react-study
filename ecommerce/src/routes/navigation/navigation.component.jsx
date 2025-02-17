@@ -1,12 +1,14 @@
-import { Fragment, useContext } from "react";
-import { Outlet, Link, NavLink } from "react-router-dom";
+import { Fragment } from "react";
+import { Outlet, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from '../../store/user/user.selector'
 
 import { ReactComponent as Dewlogo } from '../../assets/Dewlogo.svg'
 
 import { LogoContainer, NavigationContainer, NavLinks } from "./navigation.style";
-import { UserContext } from "../../contexts/user.context";
-import { CartContext } from "../../contexts/cart.context";
+
 import { signOutUser } from "../../utils/firebase/firebase.util";
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
 //장바구니 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
@@ -14,8 +16,8 @@ import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component
 
 // NavBar를 표현. 로고와 메뉴를 표시함
 const Navigation = () => {
-    const { currentUser } = useContext(UserContext);
-    const { isCartOpen } = useContext(CartContext);
+    const currentUser = useSelector(selectCurrentUser);
+    const isCartOpen = useSelector(selectIsCartOpen);
 
     return (
         <Fragment>
