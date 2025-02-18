@@ -3,7 +3,7 @@ import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from './checkou
 import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-
+import PaymentForm from '../../components/payment-form/payment-form.component';
 
 
 
@@ -41,7 +41,7 @@ const Checkout = () => {
                 })
             }
             <Total>총액: ₩{cartTotal}000</Total>
-
+            <PaymentForm />
         </CheckoutContainer>
     );
 }
