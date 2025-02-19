@@ -36,7 +36,7 @@ const PaymentForm = () => {
         console.log(response.paymentIntent);
         const { paymentIntent: { client_secret } } = response;
 
-        const paymentReseult = await stripe.confirmCardPayment(client_secret, {
+        const paymentResult = await stripe.confirmCardPayment(client_secret, {
             payment_method: {
                 card: elements.getElement(CardElement),
                 billing_details: {
@@ -47,10 +47,10 @@ const PaymentForm = () => {
 
         setIsProcessingPayment(false);
 
-        if (paymentReseult.error) {
-            alert(paymentReseult.error);
+        if (paymentResult.error) {
+            alert(`${paymentResult.error.type} : ${paymentResult.error.message}`);
         } else {
-            if (paymentReseult.paymentIntent.status === 'succeeded') {
+            if (paymentResult.paymentIntent.status === 'succeeded') {
                 alert('결제 성공');
             }
         }
