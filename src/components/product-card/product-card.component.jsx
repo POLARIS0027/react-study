@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
             <img src={product.imageUrl} alt={`${product.name}`} />
             <Footer>
                 <FooterName>{product.name}</FooterName>
-                <FooterPrice>₩{product.price}000</FooterPrice>
+                <FooterPrice>₩{product.price},000</FooterPrice>
             </Footer>
             <Button buttonType={BUTTON_TYPE_CLASSES.inverted} onClick={addProductToCart}>카트에 담기</Button>
         </ProductCardContainer>

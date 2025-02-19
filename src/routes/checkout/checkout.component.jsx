@@ -40,7 +40,7 @@ const Checkout = () => {
                     );
                 })
             }
-            <Total>총액: ₩{cartTotal}000</Total>
+            <Total>총액: ₩{cartTotal},000</Total>
             <PaymentForm />
         </CheckoutContainer>
     );

@@ -36,7 +36,7 @@ const CheckoutItem = ({ cartItem }) => {
                     &#10095;
                 </Arrow>
             </Quantity>
-            <BaseSpan> ₩{price}000 </BaseSpan>
+            <BaseSpan> ₩{price},000 </BaseSpan>
             <RemoveButton onClick={removeItemFromCartHandler}>&#10005;</RemoveButton>
         </CheckoutItemContainer>
     );
