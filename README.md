@@ -8,7 +8,7 @@ https://loquacious-valkyrie-d4fbcc.netlify.app/
 - **ユーザー認証**: Firebase Authenticationを利用した会員登録およびログイン機能
 ![img1](https://github.com/user-attachments/assets/0974bacc-9c30-462d-807e-eab4befa7bbe)
 - **商品一覧**: カテゴリー別に分類された商品を閲覧できるショッピングページ
-![img2](https://github.com/user-attachments/assets/71a430d0-0c8f-405e-a4d5-b54ca77f9b8d)
+![img2](https://github.com/user-attachments/assets/dd0c6675-d7a2-4ae9-8d72-68ff13ea3c91)
 - **ショッピングカート**: 商品の追加、削除、数量の調整が可能なショッピングカート機能
 ![img3](https://github.com/user-attachments/assets/3de64412-1394-497b-9bc3-1e4c6cb5e7e5)
 - **決済システム**: Stripe APIと連携し、実際のカード決済をシミュレートできるチェックアウト機能
