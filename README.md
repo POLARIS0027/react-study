@@ -1,7 +1,7 @@
 # React ECサイトプロジェクト
 
 このプロジェクトは、Reactと様々な最新ウェブ技術を学び、応用するために作られたEコマースウェブサイトです。
-![URL](https://loquacious-valkyrie-d4fbcc.netlify.app/)
+[URL](https://loquacious-valkyrie-d4fbcc.netlify.app/
 ## 主な機能
 
 - **ユーザー認証**: Firebase Authenticationを利用した会員登録およびログイン機能
