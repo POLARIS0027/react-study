@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# React ECサイトプロジェクト
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+このプロジェクトは、Reactと様々な最新ウェブ技術を学び、応用するために作られたEコマースウェブサイトです。
 
-## Available Scripts
+## 主な機能
 
-In the project directory, you can run:
+- **ユーザー認証**: Firebase Authenticationを利用した会員登録およびログイン機能
+- **商品一覧**: カテゴリー別に分類された商品を閲覧できるショッピングページ
+- **ショッピングカート**: 商品の追加、削除、数量の調整が可能なショッピングカート機能
+- **決済システム**: Stripe APIと連携し、実際のカード決済をシミュレートできるチェックアウト機能
+- **状態の永続化**: `redux-persist`を使用し、リロードしてもログイン状態やカートの中身が維持されます
+- **サーバーレスバックエンド**: Netlify Functionsを利用して決済ロジックを安全に処理
 
-### `npm start`
+## 使用技術スタック
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- **React**: ユーザーインターフェース構築のための基本フレーム워크
+- **React Router**: ページ間の動的ルーティング管理
+- **Redux**: 予測可能な状態管理のためのライブラリ
+  - `react-redux`: ReactとReduxを接続
+  - `redux-thunk`: 非同期アクション処理のためのミドルウェア
+  - `redux-persist`: ストアの状態をローカルストレージに保存し、永続化
+  - `reselect`: メモ化されたセレクターを作成し、パフォーマンスを最適化
+- **Styled-components**: コンポーネントベースのCSS-in-JSスタイリング
+- **Sass**: CSSプリプロセッサ
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend & Deployment
+- **Firebase**: ユーザー認証(Authentication)及びデータベース(Firestore)のためのBaaS
+- **Stripe**: 安全な決済処理のためのAPI
+- **Netlify**: フロントエンドのデプロイ及びサーバーレス関数(Functions)のホスティング
 
-### `npm test`
+## このプロジェクトからの学び
+このプロジェクトを通じて、Reactの主要な概念（コンポーネント、フック、状態管理）や、Reduxを用いた複雑な状態管理、そしてFirebaseやStripeといった外部サービスとの連携方法を学ぶことができました。
+### **Reactの基礎 (React Basics)**
+-   コンポーネントベースのアーキテクチャの理解と実践。
+-   `props`を通じたコンポーネント間のデータ伝達方法。
+-   JSX構文と、関数コンポーネント内での状態管理・ライフサイクルの扱い方。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **React Hooks**
+-   `useState`: コンポーネントのローカル状態管理。
+-   `useEffect`: APIリクエストやイベントリスナーの設定など、副作用の処理。
+-   `useDispatch`, `useSelector`: Reduxストアの状態取得とアクション実行。
+-   `useParams`: React Routerの動的ルートからパラメータを取得。
+-   `useNavigate`: プログラムによるページ遷移の実装。
 
-### `npm run build`
+### **React Router**
+-   `react-router-dom` v6を用いた宣言的なページルーティング設定。
+-   `<Routes>`, `<Route>`, `<Outlet>` を活用したネストされたルート構造の構築。
+-   動的ルート（例: `/shop/:category`）を用いたパラメータの受け渡しと、それに応じたコンポーネントの表示。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Redux (状態管理)**
+-   アクション(Action)、レデューサー(Reducer)、ストア(Store)からなるFluxアーキテクチャの理解。
+-   `redux-thunk`ミドルウェアを用いた非同期処理（APIからのデータ取得など）の実装方法。
+-   `reselect`ライブラリを利用したメモ化セレクターによるパフォーマンス最適化。
+-   `redux-persist`によるブラウザリロード時のストア状態の永続化。
+-   機能ごと（`user`, `cart`, `categories`）にファイルを分割する実践的な状態管理構造。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **CSS in JS**
+-   `styled-components`を用いたコンポーネント単位でのスタイリング手法。
+-   `props`をスタイル定義に渡し、動的なCSSを生成する方法。
+-   グローバルスタイルとコンポーネントスコープのスタイルの共存。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Firebase (BaaS)**
+-   **Authentication**: Eメール/パスワード認証およびGoogleソーシャルログイン機能の実装。
+-   **Firestore**: NoSQLデータベースを利用した商品データやユーザー情報の保存・取得。
+-   `onAuthStateChanged`を利用したユーザーの認証状態のリアルタイム監視と、アプリ状態への反映。
 
-### `npm run eject`
+### **API連携とサーバーレス (API & Serverless)**
+-   **Stripe API**: `react-stripe-js`とサーバーレス関数を連携させた、安全な決済フローの構築。
+-   **Netlify Functions**: クライアントに公開できないAPIキーをバックエンドで安全に扱い、必要な結果のみを返すためのサーバーレスAPIエンドポイントの作成・利用方法。
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **Context API**
+-   このプロジェクトではグローバルな状態管理にReduxを主に使用しましたが、Reduxの`<Provider>`コンポーネントはReactのContext APIが基盤となっています。この経験を通じて、Context APIの基本的な役割と、Reduxのようなより高機能な状態管理ライブラリがどのような場面で有効になるかの判断基準を学びました。
